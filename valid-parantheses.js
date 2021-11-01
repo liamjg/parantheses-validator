@@ -4,7 +4,19 @@ const isValidParantheses = (input) => {
   const stack = [];
 
   for (const line of lines) {
-    for (const char of line) {
+    let inString = false;
+
+    for (let i = 0; i < line.length; i++) {
+      const char = line.charAt(i);
+
+      if (char === '"' && line.charAt(i - 1) !== `\\`) {
+        inString = !inString;
+      }
+
+      if (inString) {
+        continue;
+      }
+
       if (char === ';') {
         // stop parsing the line if we hit ; since that means we are in a comment
         break;
