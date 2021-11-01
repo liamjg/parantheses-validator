@@ -32,6 +32,21 @@ test('Test lisp code true', () => {
   expect(result).toBeTruthy();
 });
 
+test('Test lisp code true w/ comment', () => {
+  const testStr = `
+  (defun csg-intersection-intersect-all (obj-a obj-b)
+   (lambda (ray)
+     (flet ((inside-p (obj) (lambda (d) (inside-p obj (ray-point ray d))))) ; test (
+       (merge 'fvector
+              (remove-if-not (inside-p obj-b) (intersect-all obj-a ray))
+              (remove-if-not (inside-p obj-a) (intersect-all obj-b ray))
+              #'<))))`;
+
+  const result = isValidParantheses(testStr);
+
+  expect(result).toBeTruthy();
+});
+
 test('Test lisp code false', () => {
   const testStr = `
   (
