@@ -3,9 +3,9 @@ const isValidParantheses = (input) => {
 
   const stack = [];
 
-  for (const line of lines) {
-    let inString = false;
+  let inString = false;
 
+  for (const line of lines) {
     for (let i = 0; i < line.length; i++) {
       const char = line.charAt(i);
 

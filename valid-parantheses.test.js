@@ -50,7 +50,7 @@ test('Test lisp code true w/ string', () => {
 
 test('Test lisp code true w/ string', () => {
   const testStr = `
-  (write-line "Test a \")string")
+  (write-line "Test a \\")stri\\"ng")
   (defun csg-intersection-intersect-all (obj-a obj-b)
    (lambda (ray)
      (flet ((inside-p (obj) (lambda (d) (inside-p obj (ray-point ray d)))))
